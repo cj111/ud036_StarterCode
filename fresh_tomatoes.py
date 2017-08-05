@@ -1,3 +1,8 @@
+_author__ = "JC, Udacity"
+__credits__ = ["JC, Udacity"]
+__license__ = "GPL"
+__version__ = "1.1"
+
 import webbrowser
 import os
 import re
@@ -121,10 +126,12 @@ main_page_content = '''
 
 
 # A single movie entry html template
+# Added the movie's storyline to be displayed on the website.
 movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
+    <p>{storyline}</p>  
 </div>
 '''
 
@@ -144,6 +151,7 @@ def create_movie_tiles_content(movies):
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
+            storyline=movie.storyline, # storyline to be displayed on website
             poster_image_url=movie.poster_image_url,
             trailer_youtube_id=trailer_youtube_id
         )
